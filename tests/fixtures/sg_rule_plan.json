@@ -1,0 +1,54 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.7.5",
+  "resource_changes": [
+    {
+      "address": "aws_security_group_rule.rdp",
+      "type": "aws_security_group_rule",
+      "name": "rdp",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "type": "ingress",
+          "from_port": 3389,
+          "to_port": 3389,
+          "protocol": "tcp",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      }
+    },
+    {
+      "address": "aws_security_group_rule.egress_all",
+      "type": "aws_security_group_rule",
+      "name": "egress_all",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "type": "egress",
+          "from_port": 0,
+          "to_port": 0,
+          "protocol": "-1",
+          "cidr_blocks": ["0.0.0.0/0"]
+        }
+      }
+    },
+    {
+      "address": "aws_instance.retired",
+      "type": "aws_instance",
+      "name": "retired",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["delete"],
+        "before": {
+          "instance_type": "m5.24xlarge",
+          "tags": {}
+        },
+        "after": null
+      }
+    }
+  ]
+}
